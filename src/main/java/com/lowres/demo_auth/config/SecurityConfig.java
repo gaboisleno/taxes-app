@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authRequests) -> authRequests
-                        .antMatchers("/api/auth/**", "/public/**", "/h2-console/**").permitAll()
+                        .antMatchers("/**", "/api/auth/**", "/public/**", "/h2-console/**").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(sessionManager -> sessionManager
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
