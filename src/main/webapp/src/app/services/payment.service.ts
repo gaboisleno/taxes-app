@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class PaymentService {
-  private entityUrl = '/private/payment';
+  private entityUrl = '/public/payment';
   private apiUrl = environment.apiUrl + this.entityUrl;
 
   constructor(protected http: HttpClient) {}
