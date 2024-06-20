@@ -1,0 +1,21 @@
+<header class="py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between">
+      <h1>Pagos</h1>
+      <button class="btn btn btn-success" [routerLink]="['/payment/new']">
+        <i class="bi bi-plus-lg"></i>
+        Nuevo pago
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <app-custom-table
+    model="payment"
+    [headers]="['Fecha', 'Servicio', 'Total']"
+    [keys]="['createdAt', 'supplyName', 'total']"
+    [data]="list"
+    [isLoading]="isLoading"
+  ></app-custom-table>
+</div>

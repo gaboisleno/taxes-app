@@ -1,0 +1,18 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.main-section {
+  display: grid;
+  grid-template-columns: 280px auto;
+  min-height: 100vh;
+}

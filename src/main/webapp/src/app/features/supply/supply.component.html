@@ -1,0 +1,21 @@
+<header class="py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between">
+      <h1>Servicios</h1>
+      <button class="btn btn-success" [routerLink]="['/supply/new']">
+        <i class="bi bi-plus-lg"></i>
+        Nuevo servicio
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <app-custom-table
+    model="supply"
+    [headers]="['Nombre', 'Descripcion']"
+    [keys]="['name', 'description']"
+    [data]="list"
+    [isLoading]="isLoading"
+  ></app-custom-table>
+</div>

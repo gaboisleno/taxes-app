@@ -1,0 +1,47 @@
+<div
+  class="d-flex flex-column flex-shrink-0 p-3 bg-body h-100 shadow"
+  style="width: 280px"
+>
+  <a
+    href="/"
+    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+  >
+    <svg class="bi me-2" width="40" height="32">
+      <use xlink:href="#bootstrap"></use>
+    </svg>
+    <span class="fs-4">Seg. de pagos</span>
+  </a>
+  <hr />
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        aria-current="page"
+        [routerLink]="['home']"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-house me-2"></i>Inicio</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav-link"
+        [routerLink]="['dashboard']"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-speedometer2 me-2"></i>Dashboard</a
+      >
+    </li>
+    <li>
+      <a class="nav-link" [routerLink]="['supply']" routerLinkActive="active">
+        <i class="bi bi-list-stars me-2"></i>Servicios</a
+      >
+    </li>
+    <li>
+      <a class="nav-link" [routerLink]="['payment']" routerLinkActive="active">
+        <i class="bi bi-cash-coin me-2"></i>Pagos</a
+      >
+    </li>
+  </ul>
+  <hr />
+</div>
