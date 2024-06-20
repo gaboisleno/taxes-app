@@ -1,28 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PaymentService {
-  public resourceUrl = '/public/payment';
+  private entityUrl = '/private/payment';
+  private apiUrl = environment.apiUrl + this.entityUrl;
 
   constructor(protected http: HttpClient) {}
 
   public findAll(): Observable<any> {
-    return this.http.get<any>(this.resourceUrl);
+    return this.http.get<any>(this.apiUrl);
   }
 
   public findById(id: number | string): Observable<any> {
-    return this.http.get<any>(`${this.resourceUrl}/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
   public save(payment: any): Observable<any> {
-    return this.http.post(this.resourceUrl, payment);
+    return this.http.post(this.apiUrl, payment);
   }
 
   public delete(payment: any): Observable<any> {
-    return this.http.delete(this.resourceUrl, payment);
+    return this.http.delete(this.apiUrl, payment);
   }
 }
