@@ -7,6 +7,11 @@
         Nuevo pago
       </button>
     </div>
+
+    <form [formGroup]="searchForm">
+      <input type="date" formControlName="from" />
+      <input type="date" formControlName="to" />
+    </form>
   </div>
 </header>
 

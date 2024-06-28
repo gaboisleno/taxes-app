@@ -1,9 +1,12 @@
 package com.lowres.demo_auth.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.lowres.demo_auth.model.Payment;
@@ -20,7 +23,11 @@ public class PaymentService {
     private PaymentRepository paymentRepository;
 
     public List<PaymentDTO> findAll() {
-        return paymentMapper.toDto(paymentRepository.findAll());
+        return paymentMapper.toDto(paymentRepository.findAllByOrderByCreatedAt());
+    }
+
+    public Page<PaymentDTO> findAllByPage(Pageable pageable) {
+        return paymentMapper.toDto(paymentRepository.findAll(pageable));
     }
 
     public Payment save(Payment entity) {
@@ -29,5 +36,9 @@ public class PaymentService {
 
     public Optional<Payment> findById(String id) {
         return paymentRepository.findById(id);
+    }
+
+    public List<PaymentDTO> findByCreatedAtBetween(LocalDate from, LocalDate to) {
+        return paymentMapper.toDto(paymentRepository.findByCreatedAtBetween(from, to));
     }
 }

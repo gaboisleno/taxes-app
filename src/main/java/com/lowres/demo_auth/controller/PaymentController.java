@@ -1,5 +1,6 @@
 package com.lowres.demo_auth.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,9 +26,9 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @GetMapping()
-    public ResponseEntity<List<PaymentDTO>> findAll() {
-        List<PaymentDTO> list = paymentService.findAll();
-        return ResponseEntity.ok().body(list);
+    public ResponseEntity<?> findAll() {
+        List<PaymentDTO> page = paymentService.findAll();
+        return ResponseEntity.ok().body(page);
     }
 
     @GetMapping("/{id}")
@@ -41,14 +42,9 @@ public class PaymentController {
     }
 
     @GetMapping("/query")
-    public ResponseEntity<?> getMethodName(@RequestParam String date) {
-        List<PaymentDTO> payments = paymentService.findAll();
-        long total = 0;
-        // Sum total
-        for (PaymentDTO payment : payments) {
-            total += Long.parseLong(payment.getTotal());
-        }
-        return ResponseEntity.ok().body(total);
+    public ResponseEntity<?> find(@RequestParam String from, @RequestParam String to) {
+        List<PaymentDTO> result = paymentService.findByCreatedAtBetween(LocalDate.parse(from), LocalDate.parse(to));
+        return ResponseEntity.ok().body(result);
     }
 
     @PostMapping()

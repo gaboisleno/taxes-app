@@ -27,4 +27,8 @@ export class PaymentService {
   public delete(payment: any): Observable<any> {
     return this.http.delete(this.apiUrl, payment);
   }
+
+  public findByCreatedAt(from: any, to: any): Observable<any> {
+    return this.http.get(`${this.apiUrl}/query`, { params: { from, to } });
+  }
 }
