@@ -33,7 +33,7 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchForm.valueChanges.subscribe((values) => {
-      if (values.from && values.to) {
+       
         this.paymentService
           .findByCreatedAt(values.from, values.to)
           .pipe(
@@ -48,7 +48,7 @@ export class PaymentComponent implements OnInit {
             this.list = response;
             this.isLoading = false;
           });
-      }
+      
     });
   }
 

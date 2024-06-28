@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.lowres.demo_auth.model.Payment;
@@ -20,8 +24,26 @@ public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     public List<PaymentDTO> findAll() {
         return paymentMapper.toDto(paymentRepository.findAllByOrderByCreatedAt());
+    }
+
+    public List<PaymentDTO> findTest(LocalDate from, LocalDate to) {
+        Query query = new Query();
+
+        if (from != null && !from.toString().equals("null") && to != null) {
+            query.addCriteria(Criteria.where("createdAt").gte(from).lte(to));
+        } else if (from != null) {
+            query.addCriteria(Criteria.where("createdAt").gte(from));
+        } else if (to != null) {
+            query.addCriteria(Criteria.where("createdAt").gte(to));
+        }
+
+        query.with(Sort.by(Sort.Direction.ASC, "createdAt"));
+        return paymentMapper.toDto(mongoTemplate.find(query, Payment.class));
     }
 
     /*

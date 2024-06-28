@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,8 +43,11 @@ public class PaymentController {
     }
 
     @GetMapping("/query")
-    public ResponseEntity<?> find(@RequestParam String from, @RequestParam String to) {
-        List<PaymentDTO> result = paymentService.findByCreatedAtBetween(LocalDate.parse(from), LocalDate.parse(to));
+    public ResponseEntity<?> find(
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
+
+        List<PaymentDTO> result = paymentService.findTest(from, to);
         return ResponseEntity.ok().body(result);
     }
 

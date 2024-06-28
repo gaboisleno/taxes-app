@@ -29,6 +29,14 @@ export class PaymentService {
   }
 
   public findByCreatedAt(from: any, to: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}/query`, { params: { from, to } });
+    let params = {} as any;
+    if (from) {
+      params.from = from;
+    }
+    if (to) {
+      params.to = to;
+    }
+
+    return this.http.get(`${this.apiUrl}/query`, { params });
   }
 }
