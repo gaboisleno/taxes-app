@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.lowres.demo_auth.model.Payment;
@@ -26,9 +24,12 @@ public class PaymentService {
         return paymentMapper.toDto(paymentRepository.findAllByOrderByCreatedAt());
     }
 
-    public Page<PaymentDTO> findAllByPage(Pageable pageable) {
-        return paymentMapper.toDto(paymentRepository.findAll(pageable));
-    }
+    /*
+     * TODO
+     * public Page<PaymentDTO> findAllByPage(Pageable pageable) {
+     * return paymentMapper.toDto(paymentRepository.findAll(pageable));
+     * }
+     */
 
     public Payment save(Payment entity) {
         return paymentRepository.save(entity);
