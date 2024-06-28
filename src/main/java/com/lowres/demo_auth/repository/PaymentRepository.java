@@ -17,4 +17,5 @@ public interface PaymentRepository extends MongoRepository<Payment, String> {
     List<Payment> findByCreatedAtBetween(LocalDate from, LocalDate to);
 
     List<Payment> findAllByOrderByCreatedAt();
+
 }

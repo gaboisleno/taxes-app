@@ -46,13 +46,6 @@ public class PaymentService {
         return paymentMapper.toDto(mongoTemplate.find(query, Payment.class));
     }
 
-    /*
-     * TODO
-     * public Page<PaymentDTO> findAllByPage(Pageable pageable) {
-     * return paymentMapper.toDto(paymentRepository.findAll(pageable));
-     * }
-     */
-
     public Payment save(Payment entity) {
         return paymentRepository.save(entity);
     }
