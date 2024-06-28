@@ -31,7 +31,13 @@ export class PaymentComponent implements OnInit {
     this.initializateSearchForm();
   }
 
-  private initializateSearchForm(): void {
+  public ngOnInit(): void {
+    this.searchForm.valueChanges.subscribe((values) => {
+      this.loadData();
+    });
+  }
+
+  public initializateSearchForm(): void {
     const firstDay = new Date(this.date.getFullYear(), this.date.getMonth(), 1)
       .toISOString()
       .split('T')[0];
@@ -52,13 +58,8 @@ export class PaymentComponent implements OnInit {
     this.loadData();
   }
 
-  public ngOnInit(): void {
-    this.searchForm.valueChanges.subscribe((values) => {
-      this.loadData();
-    });
-  }
-
   public loadData(): void {
+    this.isLoading = true;
     this.paymentService
       .findByCreatedAt(this.searchForm.value)
       .pipe(
@@ -69,9 +70,14 @@ export class PaymentComponent implements OnInit {
           }));
         })
       )
-      .subscribe((response) => {
-        this.list = response;
-        this.isLoading = false;
+      .subscribe({
+        next: (response) => {
+          this.list = response;
+        },
+        error: () => {},
+        complete: () => {
+          this.isLoading = false;
+        },
       });
   }
 }
