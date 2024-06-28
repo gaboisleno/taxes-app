@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NamePipe } from '../../core/pipes/test.pipe';
 import { SpinnerComponent } from '../spinner/spinner.component';
@@ -17,4 +17,13 @@ export class CustomTableComponent {
   @Input() data: any[] = [];
   @Input() model: string = '';
   @Input() isLoading = false;
+  @Input() showPagination = true;
+
+  @Output() event = new EventEmitter();
+
+  constructor() {}
+
+  public emitEvent(key: string, data: any) {
+    this.event.emit({ key, data });
+  }
 }

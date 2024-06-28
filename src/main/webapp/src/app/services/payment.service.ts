@@ -28,13 +28,13 @@ export class PaymentService {
     return this.http.delete(this.apiUrl, payment);
   }
 
-  public findByCreatedAt(from: any, to: any): Observable<any> {
+  public findByCreatedAt(query: any): Observable<any> {
     let params = {} as any;
-    if (from) {
-      params.from = from;
+    if (query.from) {
+      params.from = query.from;
     }
-    if (to) {
-      params.to = to;
+    if (query.to) {
+      params.to = query.to;
     }
 
     return this.http.get(`${this.apiUrl}/query`, { params });
