@@ -37,8 +37,8 @@
 <div class="container">
   <app-custom-table
     model="payment"
-    [headers]="['Fecha', 'Servicio', 'Total']"
-    [keys]="['createdAt', 'supplyName', 'total']"
+    [headers]="['Fecha', 'Servicio', 'Detalle', 'Monto']"
+    [keys]="['createdAt', 'supplyName', 'detail', 'total']"
     [data]="list"
     [isLoading]="isLoading"
   ></app-custom-table>

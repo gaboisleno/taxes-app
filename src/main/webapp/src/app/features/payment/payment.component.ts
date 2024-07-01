@@ -26,6 +26,12 @@ export class PaymentComponent implements OnInit {
     from: new FormControl(),
     to: new FormControl(),
   });
+  public tableInfo = {
+    createdAt: 'Fecha',
+    supplyName: 'Servicio',
+    detail: 'Detalle',
+    total: 'Monto',
+  };
 
   constructor(private paymentService: PaymentService) {
     this.initializateSearchForm();
