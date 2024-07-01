@@ -29,7 +29,7 @@ export class PaymentComponent implements OnInit {
   public tableInfo = {
     createdAt: 'Fecha',
     supplyName: 'Servicio',
-    detail: 'Detalle',
+    description: 'Detalle',
     total: 'Monto',
   };
 
