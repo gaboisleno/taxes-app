@@ -35,10 +35,18 @@
 </header>
 
 <div class="container">
+  <div
+    *ngIf="!isLoading"
+    class="alert alert-dismissible alert-primary d-flex justify-content-center gap-3"
+  >
+    <strong>Total</strong>
+    <span *ngIf="list">
+      {{ getTotal() | currency }}
+    </span>
+  </div>
   <app-custom-table
     model="payment"
-    [headers]="['Fecha', 'Servicio', 'Detalle', 'Monto']"
-    [keys]="['createdAt', 'supplyName', 'description', 'total']"
+    [mapTable]="tableInfo"
     [data]="list"
     [isLoading]="isLoading"
   ></app-custom-table>

@@ -13,8 +13,7 @@
 <div class="container">
   <app-custom-table
     model="supply"
-    [headers]="['Nombre', 'Descripcion']"
-    [keys]="['name', 'description']"
+    [mapTable]="tableInfo"
     [data]="list"
     [isLoading]="isLoading"
   ></app-custom-table>

@@ -2,15 +2,15 @@
   <table class="table align-middle shadow-sm">
     <thead>
       <tr>
-        <th *ngFor="let header of headers">{{ header }}</th>
+        <th *ngFor="let header of mapTable">{{ header.label }}</th>
         <th>Accion</th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let item of data">
-        <td *ngFor="let k of keys" class="text-secondary">
-          {{ item[k] }}
+        <td *ngFor="let val of mapTable" class="text-secondary">
+          {{ item[val.field] }}
         </td>
         <td>
           <button class="btn btn-primary" [routerLink]="['/' + model, item.id]">

@@ -15,6 +15,10 @@ import { CustomTableComponent } from '../../shared/custom-table/custom-table.com
 export class SupplyComponent implements OnInit {
   public list: Supply[] = [];
   public isLoading = false;
+  public tableInfo = [
+    { field: 'name', label: 'Nombre' },
+    { field: 'description', label: 'Detalle' },
+  ];
 
   constructor(private supplyService: SupplyService) {}
 

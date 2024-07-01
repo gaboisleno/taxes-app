@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -14,6 +14,7 @@ import { CustomTableComponent } from '../../shared/custom-table/custom-table.com
     CommonModule,
     CustomTableComponent,
     ReactiveFormsModule,
+    CurrencyPipe,
   ],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css',
@@ -26,12 +27,12 @@ export class PaymentComponent implements OnInit {
     from: new FormControl(),
     to: new FormControl(),
   });
-  public tableInfo = {
-    createdAt: 'Fecha',
-    supplyName: 'Servicio',
-    description: 'Detalle',
-    total: 'Monto',
-  };
+  public tableInfo = [
+    { field: 'createdAt', label: 'Fecha' },
+    { field: 'supplyName', label: 'Servicio' },
+    { field: 'description', label: 'Detalle' },
+    { field: 'total', label: 'monto' },
+  ];
 
   constructor(private paymentService: PaymentService) {
     this.initializateSearchForm();
@@ -85,5 +86,11 @@ export class PaymentComponent implements OnInit {
           this.isLoading = false;
         },
       });
+  }
+
+  public getTotal(): number {
+    let value = 0;
+    this.list.forEach((x) => (value += parseInt(x.total, 10)));
+    return value;
   }
 }

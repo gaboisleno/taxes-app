@@ -12,12 +12,11 @@ import { SpinnerComponent } from '../spinner/spinner.component';
   styleUrl: './custom-table.component.css',
 })
 export class CustomTableComponent {
-  @Input() keys: any[] = [];
-  @Input() headers: any[] = [];
   @Input() data: any[] = [];
   @Input() model: string = '';
   @Input() isLoading = false;
   @Input() showPagination = true;
+  @Input() mapTable: any[] = [];
 
   @Output() event = new EventEmitter();
 
