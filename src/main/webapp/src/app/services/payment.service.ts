@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -28,15 +28,8 @@ export class PaymentService {
     return this.http.delete(this.apiUrl, payment);
   }
 
-  public findByCreatedAt(query: any): Observable<any> {
-    let params = {} as any;
-    if (query.from) {
-      params.from = query.from;
-    }
-    if (query.to) {
-      params.to = query.to;
-    }
-
+  public findBy(query: any): Observable<any> {
+    const params = new HttpParams({ fromObject: query });
     return this.http.get(`${this.apiUrl}/query`, { params });
   }
 }

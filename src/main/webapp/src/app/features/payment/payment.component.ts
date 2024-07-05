@@ -68,7 +68,7 @@ export class PaymentComponent implements OnInit {
   public loadData(): void {
     this.isLoading = true;
     this.paymentService
-      .findByCreatedAt(this.searchForm.value)
+      .findBy(this.searchForm.value)
       .pipe(
         map((result: any[]) => {
           return result.map((x: any) => ({
