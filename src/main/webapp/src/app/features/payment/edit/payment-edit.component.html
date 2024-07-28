@@ -1,12 +1,12 @@
-<header class="py-5">
-  <div class="container">
-    <h1>Pagos</h1>
+<header class="p-5">
+  <div>
+    <h1>Nuevo Pago</h1>
   </div>
 </header>
 
-<div class="container">
+<body>
   <div class="row justify-content-center" *ngIf="!isLoading; else loader">
-    <div class="col-md-6 my-3 p-3 bg-body rounded shadow-sm">
+    <div class="col-md-6 my-3 p-3 bg-body rounded shadow">
       <form [formGroup]="paymentForm" (ngSubmit)="submit()">
         <div class="mb-3">
           <label for="supply" class="form-label">Supply</label>
@@ -99,7 +99,7 @@
       </form>
     </div>
   </div>
-</div>
+</body>
 
 <ng-template #loader>
   <app-spinner></app-spinner>

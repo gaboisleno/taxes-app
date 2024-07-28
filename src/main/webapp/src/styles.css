@@ -1,10 +1,7 @@
-html {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
 }
 
 input.ng-invalid.ng-touched {
@@ -12,7 +9,18 @@ input.ng-invalid.ng-touched {
 }
 
 .main-section {
-  display: grid;
-  grid-template-columns: 280px auto;
-  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+  }
+
+  .content {
+    width: 100%;
+    overflow-y: scroll;
+  }
 }
