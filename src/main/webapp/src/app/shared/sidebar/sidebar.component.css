@@ -14,15 +14,3 @@ li {
 i {
   margin-right: 10px;
 }
-
-@media (max-width: 800px) {
-  i {
-    margin: auto;
-  }
-  li {
-    width: auto;
-  }
-  .sidebar {
-    width: 80px;
-  }
-}

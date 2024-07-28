@@ -1,5 +1,9 @@
+<div class="custom-navbar">
+  <app-navbar (burgerClicked)="toggleSidebar()"></app-navbar>
+</div>
+
 <div class="main-section">
-  <div class="sidevar">
+  <div class="sidebar" [ngClass]="{ 'd-none': hideSidebar }">
     <app-sidebar></app-sidebar>
   </div>
 
