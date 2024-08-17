@@ -1,5 +1,5 @@
 <header class="p-5">
-  <div>
+  <div *ngIf="!isLoading">
     <div class="d-flex justify-content-between">
       <h1>Servicios</h1>
       <button class="btn btn-success" [routerLink]="['/supply/new']">

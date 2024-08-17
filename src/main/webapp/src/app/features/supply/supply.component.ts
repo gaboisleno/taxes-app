@@ -28,9 +28,11 @@ export class SupplyComponent implements OnInit {
 
   public loadPage(): void {
     this.isLoading = true;
-    this.supplyService.findAll().subscribe((response) => {
-      this.list = response;
-      this.isLoading = false;
-    });
+    this.supplyService
+      .findAll()
+      .subscribe((response) => {
+        this.list = response;
+      })
+      .add(() => (this.isLoading = false));
   }
 }

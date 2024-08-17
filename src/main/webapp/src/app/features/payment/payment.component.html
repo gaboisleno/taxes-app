@@ -1,8 +1,8 @@
 <header class="p-5">
-  <div>
+  <div *ngIf="!isLoading">
     <div class="d-flex justify-content-between">
       <h1>Pagos</h1>
-      <button class="btn btn btn-success" [routerLink]="['/payment/new']">
+      <button class="btn btn-success" [routerLink]="['/payment/new']">
         <i class="bi bi-plus-lg"></i>
         Nuevo pago
       </button>

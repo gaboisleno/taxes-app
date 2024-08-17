@@ -81,11 +81,8 @@ export class PaymentComponent implements OnInit {
         next: (response) => {
           this.list = response;
         },
-        error: () => {},
-        complete: () => {
-          this.isLoading = false;
-        },
-      });
+      })
+      .add(() => (this.isLoading = false));
   }
 
   public getTotal(): number {

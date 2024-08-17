@@ -1,9 +1,22 @@
-.nav-link {
-  color: white;
-}
-
 .sidebar {
   width: 280px;
+
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.nav-link,
+.nav-link.active {
+  color: #212529;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link.active {
+  background-color: #e5ebee;
+}
+
+.nav-link:hover {
+  background-color: #e5ebee67;
 }
 
 a,

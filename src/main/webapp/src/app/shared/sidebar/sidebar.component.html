@@ -1,41 +1,40 @@
-<div
-  class="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white h-100 sidebar"
->
+<div class="d-flex flex-column flex-shrink-0 p-3 h-100 sidebar">
   <div>
     <div>
       <h1>PagosApp</h1>
     </div>
     <hr />
-    <ul class="nav nav-pills flex-column mb-auto">
+    <ul class="nav nav-pills nav-fill mb-auto">
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['home']" routerLinkActive="active">
-          <i class="bi bi-house"></i>
+          <i class="fs-5 bi bi-house-fill"></i>
           <span>Inicio</span>
         </a>
       </li>
-      <li>
+
+      <li class="nav-item">
         <a
           class="nav-link"
           [routerLink]="['dashboard']"
           routerLinkActive="active"
         >
-          <i class="bi bi-speedometer2"></i>
+          <i class="fs-5 bi bi-pie-chart-fill"></i>
           <span>Dashboard</span>
         </a>
       </li>
-      <li>
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['supply']" routerLinkActive="active">
-          <i class="bi bi-list-stars"></i>
+          <i class="fs-5 bi bi-database-fill"></i>
           <span>Servicios</span>
         </a>
       </li>
-      <li>
+      <li class="nav-item">
         <a
           class="nav-link"
           [routerLink]="['payment']"
           routerLinkActive="active"
         >
-          <i class="bi bi-cash-coin"></i>
+          <i class="fs-5 bi bi-credit-card-fill"></i>
           <span>Pagos</span>
         </a>
       </li>

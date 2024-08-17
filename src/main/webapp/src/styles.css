@@ -19,14 +19,19 @@ input.ng-invalid.ng-touched {
   display: flex;
   height: calc(100vh - 72px); /*72px is the height of navbar*/
   overflow: hidden;
+
+  & .sidebar {
+    position: sticky;
+    top: 200px;
+  }
+
+  & .content {
+    width: 100%;
+    overflow-y: scroll;
+  }
 }
 
-.main-section .sidebar {
-  position: sticky;
-  top: 200px;
-}
-
-.main-section .content {
-  width: 100%;
-  overflow-y: scroll;
+.side-hide {
+  transform: translateX(-280px); /*280px is the width of sidebar*/
+  width: 0;
 }
