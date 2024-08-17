@@ -15,7 +15,7 @@ export class CustomTableComponent {
   @Input() data: any[] = [];
   @Input() model: string = '';
   @Input() isLoading = false;
-  @Input() showPagination = false;
+  @Input() showPagination = true;
   @Input() mapTable: any[] = [];
 
   @Output() event = new EventEmitter();
