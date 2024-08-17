@@ -17,7 +17,7 @@ input.ng-invalid.ng-touched {
 .main-section {
   width: 100%;
   display: flex;
-  max-height: calc(100vh - 72px); /*72px is the height of navbar*/
+  height: calc(100vh - 82px); /*82px is the height of navbar*/
   overflow: hidden;
 
   & .sidebar {
