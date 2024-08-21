@@ -64,14 +64,18 @@ export class PaymentEditComponent implements OnInit {
   ngOnInit(): void {}
 
   submit() {
+    this.isLoading = true;
     let item = this.paymentForm.value;
     item.createdAt = item.createdAt ? item.createdAt : new Date();
 
     item.supply = { id: item.supply };
 
-    this.paymentService.save(item).subscribe((response) => {
-      this.goBack();
-    });
+    this.paymentService
+      .save(item)
+      .subscribe((response) => {
+        this.goBack();
+      })
+      .add(() => (this.isLoading = false));
   }
 
   goBack() {

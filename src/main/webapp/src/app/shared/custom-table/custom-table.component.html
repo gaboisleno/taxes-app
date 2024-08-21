@@ -1,5 +1,5 @@
-<div *ngIf="!isLoading; else loader">
-  <table class="table align-middle shadow">
+<div *ngIf="!isLoading; else loader" class="custom-border mb-5">
+  <table class="table align-middle">
     <thead>
       <tr>
         <th *ngFor="let header of mapTable">{{ header.label }}</th>

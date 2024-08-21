@@ -46,9 +46,13 @@ export class SupplyEditComponent {
   }
 
   public submit(): void {
-    this.supplyService.save(this.supplyForm.value).subscribe((res) => {
-      this.goBack();
-    });
+    this.isLoading = true;
+    this.supplyService
+      .save(this.supplyForm.value)
+      .subscribe((res) => {
+        this.goBack();
+      })
+      .add(() => (this.isLoading = false));
   }
 
   public goBack(): void {
