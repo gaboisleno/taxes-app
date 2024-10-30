@@ -2,8 +2,10 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs';
 import { PaymentService } from '../../services/payment.service';
+import { ConfirmModalComponent } from '../../shared/confirm-modal/confirm-modal.component';
 import { CustomTableComponent } from '../../shared/custom-table/custom-table.component';
 
 @Component({
@@ -27,6 +29,7 @@ export class PaymentComponent implements OnInit {
     from: new FormControl(),
     to: new FormControl(),
   });
+
   public tableInfo = [
     { field: 'createdAt', label: 'Fecha' },
     { field: 'supplyName', label: 'Servicio' },
@@ -34,7 +37,7 @@ export class PaymentComponent implements OnInit {
     { field: 'total', label: 'monto' },
   ];
 
-  constructor(private paymentService: PaymentService) {
+  constructor(private paymentService: PaymentService, private modal: NgbModal) {
     this.initializateSearchForm();
   }
 
@@ -89,5 +92,29 @@ export class PaymentComponent implements OnInit {
     let value = 0;
     this.list.forEach((x) => (value += parseInt(x.total, 10)));
     return value;
+  }
+
+  public onEvent(event: any) {
+    switch (event.key) {
+      case 'delete':
+        const modalRef = this.modal.open(ConfirmModalComponent, {
+          size: 'lg',
+          centered: true,
+        });
+
+        modalRef.result.then(
+          (res) => {
+            this.paymentService.delete(event.data).subscribe(() => {
+              this.loadData();
+            });
+          },
+          () => {}
+        );
+
+        break;
+
+      case 'view':
+        break;
+    }
   }
 }

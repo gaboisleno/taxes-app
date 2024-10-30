@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -18,6 +20,8 @@ import com.lowres.demo_auth.service.mapper.PaymentMapper;
 
 @Service
 public class PaymentService {
+    public static final Logger logger = LoggerFactory.getLogger(PaymentService.class);
+
     @Autowired
     private PaymentMapper paymentMapper;
 
@@ -56,5 +60,9 @@ public class PaymentService {
 
     public List<PaymentDTO> findByCreatedAtBetween(LocalDate from, LocalDate to) {
         return paymentMapper.toDto(paymentRepository.findByCreatedAtBetween(from, to));
+    }
+
+    public void deleteById(String id) {
+        paymentRepository.deleteById(id);
     }
 }

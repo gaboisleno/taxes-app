@@ -13,6 +13,7 @@ public class Payment {
     private byte[] file;
     private String fileType;
     private LocalDate createdAt;
+    private LocalDate deletedAt;
     private String description;
 
     @DocumentReference(lazy = true)
@@ -58,6 +59,14 @@ public class Payment {
         this.createdAt = createdAt;
     }
 
+    public LocalDate getDeletedAt() {
+        return this.deletedAt;
+    }
+
+    public void setDeletedAt(LocalDate deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
     public String getDescription() {
         return this.description;
     }
@@ -82,6 +91,7 @@ public class Payment {
                 ", file='" + getFile() + "\'" +
                 ", fileType='" + getFileType() + "\'" +
                 ", createdAt='" + getCreatedAt() + "\'" +
+                ", deletedAt='" + getDeletedAt() + "\'" +
                 ", description='" + getDescription() + "\'" +
                 ", supply='" + getSupply() + "\'" +
                 "}";
