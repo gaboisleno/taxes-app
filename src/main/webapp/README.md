@@ -25,3 +25,22 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Eslint instalation
+
+`ng add @angular-eslint/schematics`
+
+Personally I like to configure eslint to avoid explicit any error.
+In rules add:
+`"@typescript-eslint/no-explicit-any": "off",`
+
+## Husky
+
+`npm install --save-dev husky npx husky init`
+The init command simplifies setting up husky in a project. It creates a pre-commit script in .husky/ and updates the prepare script in
+package.json. Modifications can be made later to suit your workflow.
+
+## Pettier
+
+`npm install --save-dev prettier`
+To do this, we’ll create a file named .prettierrc in the root of the project directory

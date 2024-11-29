@@ -49,7 +49,7 @@ export class SupplyEditComponent {
     this.isLoading = true;
     this.supplyService
       .save(this.supplyForm.value)
-      .subscribe((res) => {
+      .subscribe(() => {
         this.goBack();
       })
       .add(() => (this.isLoading = false));

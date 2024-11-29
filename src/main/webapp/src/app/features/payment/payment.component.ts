@@ -42,7 +42,7 @@ export class PaymentComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.searchForm.valueChanges.subscribe((values) => {
+    this.searchForm.valueChanges.subscribe(() => {
       this.loadData();
     });
   }
@@ -97,24 +97,27 @@ export class PaymentComponent implements OnInit {
   public onEvent(event: any) {
     switch (event.key) {
       case 'delete':
-        const modalRef = this.modal.open(ConfirmModalComponent, {
-          size: 'lg',
-          centered: true,
-        });
-
-        modalRef.result.then(
-          (res) => {
-            this.paymentService.delete(event.data).subscribe(() => {
-              this.loadData();
-            });
-          },
-          () => {}
-        );
-
+        this.openDeleteDialog(event);
         break;
 
       case 'view':
         break;
     }
+  }
+
+  public openDeleteDialog(event: any): void {
+    const modalRef = this.modal.open(ConfirmModalComponent, {
+      size: 'lg',
+      centered: true,
+    });
+
+    modalRef.result.then(
+      () => {
+        this.paymentService.delete(event.data).subscribe(() => {
+          this.loadData();
+        });
+      },
+      () => {}
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -6,8 +6,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './confirm-modal.component.html',
   standalone: true,
 })
-export class ConfirmModalComponent implements OnInit {
+export class ConfirmModalComponent {
   constructor(public modal: NgbActiveModal) {}
-
-  ngOnInit(): void {}
 }

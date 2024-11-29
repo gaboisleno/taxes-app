@@ -41,24 +41,23 @@ export class SupplyComponent implements OnInit {
   public onEvent(event: any) {
     switch (event.key) {
       case 'delete':
-        const modalRef = this.modal.open(ConfirmModalComponent, {
-          size: 'lg',
-          centered: true,
-        });
-
-        modalRef.result.then(
-          (res) => {
-            this.supplyService.delete(event.data).subscribe(() => {
-              this.loadPage();
-            });
-          },
-          () => {}
-        );
-
+        // this.openDeleteDialog();
         break;
 
       case 'view':
         break;
     }
+  }
+
+  public openDeleteDialog(): void {
+    const modalRef = this.modal.open(ConfirmModalComponent, {
+      size: 'lg',
+      centered: true,
+    });
+
+    modalRef.result.then(
+      () => {},
+      () => {}
+    );
   }
 }

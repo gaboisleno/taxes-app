@@ -39,7 +39,7 @@ export class PaymentService {
    * Delete one entity by id
    * @param Id - Payment Id
    **/
-  public delete(paymentId: String): Observable<any> {
+  public delete(paymentId: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${paymentId}`);
   }
 

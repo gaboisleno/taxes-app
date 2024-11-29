@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -24,8 +24,10 @@ export class SupplyService {
     return this.http.post(this.apiUrl, supply);
   }
 
+  /*
   public delete(supply: any): Observable<any> {
     return of(null);
     // return this.http.delete(this.apiUrl, supply);
   }
+  */
 }

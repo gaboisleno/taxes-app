@@ -1,5 +1,5 @@
 import { CommonModule, JsonPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -27,7 +27,7 @@ import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
   templateUrl: './payment-edit.component.html',
   styleUrl: './payment-edit.component.css',
 })
-export class PaymentEditComponent implements OnInit {
+export class PaymentEditComponent {
   isNew = false;
   isLoading = false;
   supplies: Supply[] = [];
@@ -61,18 +61,15 @@ export class PaymentEditComponent implements OnInit {
     this.paymentForm.markAllAsTouched();
   }
 
-  ngOnInit(): void {}
-
   submit() {
     this.isLoading = true;
-    let item = this.paymentForm.value;
+    const item = this.paymentForm.value;
     item.createdAt = item.createdAt ? item.createdAt : new Date();
-
     item.supply = { id: item.supply };
 
     this.paymentService
       .save(item)
-      .subscribe((response) => {
+      .subscribe(() => {
         this.goBack();
       })
       .add(() => (this.isLoading = false));
@@ -103,7 +100,7 @@ export class PaymentEditComponent implements OnInit {
     });
   }
 
-  errorMessage(arg0: string) {
+  errorMessage() {
     throw new Error('Method not implemented.');
   }
 
