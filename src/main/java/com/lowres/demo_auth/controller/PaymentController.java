@@ -46,6 +46,12 @@ public class PaymentController {
         }
     }
 
+    @GetMapping("/findByService/{id}")
+    public ResponseEntity<?> findByServiceId(@PathVariable("id") String id) {
+        List<PaymentDTO> result = paymentService.findBySupplyId(id);
+        return ResponseEntity.ok().body(result);
+    }
+
     @GetMapping("/query")
     public ResponseEntity<?> find(
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,

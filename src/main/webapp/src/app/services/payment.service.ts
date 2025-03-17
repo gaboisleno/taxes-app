@@ -52,4 +52,11 @@ export class PaymentService {
     const params = new HttpParams({ fromObject: query });
     return this.http.get(`${this.apiUrl}/query`, { params });
   }
+
+  /**
+   * Get a list of all payments filtered by a specific supply
+   **/
+  public findBySupply(supplyId: String): Observable<any> {
+    return this.http.get(`${this.apiUrl}/findByService/${supplyId}`);
+  }
 }

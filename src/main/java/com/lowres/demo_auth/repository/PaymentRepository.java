@@ -18,4 +18,7 @@ public interface PaymentRepository extends MongoRepository<Payment, String> {
 
     List<Payment> findAllByOrderByCreatedAt();
 
+    @Query("{ 'supply._id': ?0 }")
+    List<Payment> findAllBySupplyId(String id);
+
 }

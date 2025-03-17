@@ -65,4 +65,8 @@ public class PaymentService {
     public void deleteById(String id) {
         paymentRepository.deleteById(id);
     }
+
+    public List<PaymentDTO> findBySupplyId(String id) {
+        return paymentMapper.toDto(paymentRepository.findAllBySupplyId(id));
+    }
 }
