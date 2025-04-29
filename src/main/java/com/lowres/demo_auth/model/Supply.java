@@ -15,6 +15,8 @@ public class Supply {
     // @Column(name = "description")
     private String description;
 
+    private String url;
+
     public String getId() {
         return this.id;
     }
@@ -39,12 +41,21 @@ public class Supply {
         this.description = description;
     }
 
+    public String getUrl() {
+        return this.url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @Override
     public String toString() {
         return "Supply{" +
                 "id='" + getId() + "\'" +
                 ", name='" + getName() + "\'" +
                 ", description='" + getDescription() + "\'" +
+                ", url='" + getUrl() + "\'" +
                 "}";
     }
 }

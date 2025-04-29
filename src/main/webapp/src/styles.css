@@ -1,37 +1,14 @@
-* {
+/* You can add global styles to this file, and also import other style files */
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-input.ng-invalid.ng-touched {
-  border: 1px solid red;
+body {
+  background-color: #ddd;
 }
-
-.custom-navbar {
-  z-index: 1;
-  position: sticky;
-  top: 0;
-}
-
-.main-section {
-  width: 100%;
-  display: flex;
-  height: calc(100vh - 56px); /*82px is the height of navbar*/
-  overflow: hidden;
-
-  & .sidebar {
-    position: sticky;
-    top: 200px;
-  }
-
-  & .content {
-    width: 100%;
-    overflow: auto;
-  }
-}
-
-.side-hide {
-  transform: translateX(-280px); /*280px is the width of sidebar*/
-  width: 0;
+th {
+  background-color: transparent !important;
 }
