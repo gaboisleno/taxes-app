@@ -51,6 +51,7 @@ import { CategoriesService } from '../services/categories.service';
             <td><p-skeleton /></td>
             <td><p-skeleton /></td>
             <td><p-skeleton /></td>
+            <td><p-skeleton /></td>
           </tr>
           } @else {
           <tr>
